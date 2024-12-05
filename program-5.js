@@ -9,5 +9,47 @@ Given an integer array flowerbed containing 0's and 1's, where 0 means empty and
 // Output: true
 
 // Example 2:
-// Input: flowerbed = [1,0,0,0,1], n = 2
 // Output: false
+
+flowerbed = [1, 0, 0, 0, 1];
+function isProper(flowerbed, index) {
+  if (
+    index > 0 &&
+    flowerbed[index] != 1 &&
+    index < flowerbed.length - 1 &&
+    flowerbed[index - 1] != 1 &&
+    flowerbed[index + 1] != 1
+  ) {
+    return true;
+  }
+  if (index == 0 || index == flowerbed.length - 1) {
+    return true;
+  }
+  return false;
+}
+
+function solution(flowerbed, n) {
+  flag = false;
+  for (let i = 0; i < flowerbed.length; i++) {
+    if (isProper(flowerbed, i) && flowerbed[i] != 1) {
+      n--;
+      flowerbed[i] = 1;
+      flag = true;
+    }
+  }
+  return flag;
+}
+
+function fun(flowerbed, n) {
+  while (n > 0) {
+    bool = solution(flowerbed, n);
+    n--;
+
+    if (!bool) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(fun(flowerbed, 2));
+ 
