@@ -22,7 +22,7 @@
 // }
 
 function flattenArray(arr1) {
-  return arr1.flat(Infinity);
+  return arr1.flat(Infinity)
 }
 
 arr = [1, 2, [3, [4, 5]], [5, [6, 7]]];
