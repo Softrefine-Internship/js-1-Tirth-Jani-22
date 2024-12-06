@@ -52,7 +52,23 @@ function merge(arr1, arr2) {
     }
     j++;
   }
-  return ans;
+  return removeDubli(ans);
 }
 
-console.log(merge([1, 2, 3, 4, 5, 6], [3, 4, 5, 7]));
+function removeDubli(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    curr = arr.splice(i, 1);
+    bool = false;
+    for (let j = 0; j < arr.length; j++) {
+      const ele = arr[j];
+      
+      if (JSON.stringify(ele) == JSON.stringify(curr[0])) {
+        bool = true;
+      }
+    }
+    if (!bool) arr.splice(i, 0, ...curr);
+  }
+  return arr;
+}
+
+console.log(merge([1, {id:"Harry Potter"}, 3, 4, 5, 6], [3, {id:"Harry Potter"}, 5, 7]));
